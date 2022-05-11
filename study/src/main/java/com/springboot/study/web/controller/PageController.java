@@ -1,4 +1,4 @@
-package com.springboot.study.web.controller.api;
+package com.springboot.study.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +8,10 @@ public class PageController {
 	
 	@GetMapping("/index")
 	public String index() {
-		return "index";
+		return "index"; //jsp경로
 	}
-
+	
+	
+	
+	
 }
