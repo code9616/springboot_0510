@@ -8,7 +8,7 @@ public class PageController {
 	
 	@GetMapping("/index")
 	public String index() {
-		return "index"; //jsp경로
+		return "index";
 	}
 	
 	
