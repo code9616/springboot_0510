@@ -46,7 +46,7 @@ public class ValidationAdvice {
 					}
 					LOGGER.info("Validation AOP 실행됨");
 					
-					throw new CustomValidationApiException("유효성 검사 실패", errorMap);
+					throw new CustomValidationApiException("유효성 검사 실패", errorMap); //throw 예외발생
 				}
 			}
 		}
