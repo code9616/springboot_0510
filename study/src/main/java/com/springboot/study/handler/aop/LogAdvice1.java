@@ -13,38 +13,36 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class LogAdvice {
-	private static final Logger LOGGER = LoggerFactory.getLogger(LogAdvice.class);//
+public class LogAdvice1 {
+	private static final Logger LOGGER = LoggerFactory.getLogger(LogAdvice.class);
 	
-	@Around("within(com.springboot.study..*)") //within 그 패키지 내의 모든 메소드적용
+	@Around("within(com.springboot.study..*)")
 	public Object logging(ProceedingJoinPoint pjp) throws Throwable{
-		long startAt = System.currentTimeMillis();//현재시간
+		long startAt = System.currentTimeMillis();
 		
 		Map<String, Object> params = getPrams(pjp);
 		
-		LOGGER.info("------Advice Call: {} ({}) = {}", pjp.getSignature().getDeclaringTypeName(),
+		LOGGER.info("-----Advice Call: {}({}) = {}", pjp.getSignature().getDeclaringTypeName(),
 				pjp.getSignature().getName(), params);
 		
 		Object result = pjp.proceed();
 		
-		long endAt = System.currentTimeMillis();//끝나는시간
+		long endAt = System.currentTimeMillis();
 		
-		LOGGER.info("------Advice Call: {} ({}) = {} ({}ms)", pjp.getSignature().getDeclaringTypeName(),
-				pjp.getSignature().getName(), result, endAt - startAt); //오는데 걸린 시간 //result 메서드결과
+		LOGGER.info("-----Advice Call: {}({}) = ({}ms)", pjp.getSignature().getDeclaringTypeName(),
+				pjp.getSignature().getName(), result, endAt - startAt);
 		
 		return result;
 	}
-	
-	public Map<String, Object> getPrams(ProceedingJoinPoint pjp){
-		
+	private Map<String, Object> getPrams(ProceedingJoinPoint pjp){
 		Map<String, Object> params = new HashMap<String, Object>();
 		
 		Object[] args = pjp.getArgs();
-		String[] argNames = ((CodeSignature)pjp.getSignature()).getParameterNames(); //다운캐스팅 getParameterNames사용가능
+		String[] argNames = ((CodeSignature)pjp.getSignature()).getParameterNames();
+		
 		for(int i = 0; i < args.length; i++) {
 			params.put(argNames[i], args[i]);
 		}
 		return params;
 	}
-	
 }

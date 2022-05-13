@@ -16,7 +16,7 @@ import com.springboot.study.web.dto.CMRespDto;
 public class ControllerExceptionHandler {
 	
 	@ExceptionHandler(CustomValidationApiException.class)
-	public ResponseEntity<?> validationApiException(CustomValidationApiException e){
+	public ResponseEntity<?> validationApiException(CustomValidationApiException e){//
 		return new ResponseEntity<>(new CMRespDto<Map<String, String>>(-1, e.getMessage(), e.getErrorMap()), HttpStatus.BAD_REQUEST);
 	}
 }
