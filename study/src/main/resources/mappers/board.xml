@@ -9,9 +9,44 @@
   			<id column="board_content" property="board_content"/>
   			<id column="board_writer" property="board_writer"/>
   			<id column="board_username" property="board_username"/>
+  			<id column="board_count" property="board_count"/>
   			<id column="create_date" property="create_date"/>
   			<id column="update_date" property="update_date"/>
   		</resultMap>
+  		
+  		<select id="getBoardListAll" resultMap="boardMap">
+  			select
+  				bm.board_code,
+  				bm.board_title,
+  				bm.board_content,
+  				bm.board_writer,
+  				um.username as board_username,
+  				bm.board_count,
+  				bm.create_date,
+  				bm.update_date
+  			from
+  				board_mst bm
+  				left outer join user_mst um on(um.user_code = bm.board_writer)
+  		</select>
+  		
+  		 <select id="getBoardListByPage" parameterType="Integer" resultMap="boardMap">
+  			select
+  				bm.board_code,
+  				bm.board_title,
+  				bm.board_content,
+  				bm.board_writer,
+  				um.username as board_username,
+  				bm.board_count,
+  				bm.create_date,
+  				bm.update_date
+  			from
+  				board_mst bm
+  				left outer join user_mst um on(um.user_code = bm.board_writer)
+  			order by
+  				board_code desc
+  			limit #{index}, 5;
+  		</select>
+  		
   
   		<insert id="insertBoard" parameterType="com.springboot.study.domain.board.BoardMst"
   		useGeneratedKeys="true" keyProperty="board_code">
@@ -22,6 +57,7 @@
   				#{board_title},
   				#{board_content},
   				#{board_writer},
+  				0,
   				now(),
   				now()
   			);
@@ -34,6 +70,7 @@
   				bm.board_content,
   				bm.board_writer,
   				um.username as board_username,
+  				bm.board_count,
   				bm.create_date,
   				bm.update_date
   			from
@@ -42,4 +79,23 @@
   			where
   				bm.board_code = #{boardCode};
   		</select>
+  		
+  		<update id="updateBoard" parameterType="com.springboot.study.domain.board.BoardMst">
+  			update
+  				board_mst
+  			set
+  				board_title = #{board_title},
+  				board_content = #{board_content}
+  			where
+  				board_code = #{boardCode};
+  		</update>
+  		
+  		<delete id="deleteBoard" parameterType="Integer">
+  			delete
+  			from
+  				board_mst
+  			where
+  				board_code = #{boardCode};
+  				
+  		</delete>
 </mapper>
