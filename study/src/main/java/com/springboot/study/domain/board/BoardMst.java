@@ -17,6 +17,7 @@ public class BoardMst {
 	private String board_content;
 	private int board_writer;
 	private int board_count;
+	private int board_count_all;
 	private LocalDateTime create_date;
 	private LocalDateTime update_date;
 }

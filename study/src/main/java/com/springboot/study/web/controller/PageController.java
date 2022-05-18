@@ -22,4 +22,8 @@ public class PageController {
 		return "board/board-dtl";
 	}
 	
+	@GetMapping("/board/create")
+	public String boardInsert() {
+		return "board/board-insert";
+	}
 }

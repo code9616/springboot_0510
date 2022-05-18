@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.study.service.board.BoardService;
@@ -35,7 +36,7 @@ public class BoardController {
 	}
 	
 	@PostMapping("/board")
-	public ResponseEntity<?> createBoard(@Valid BoardInsertReqDto boardInsertReqDto, BindingResult bindingResult) throws Exception{
+	public ResponseEntity<?> createBoard(@Valid @RequestBody BoardInsertReqDto boardInsertReqDto, BindingResult bindingResult) throws Exception{
 		int boardCode = boardService.createBoard(boardInsertReqDto);
 		return new ResponseEntity<>(new CMRespDto<Integer>(1, "게시글 작성 완료", boardCode), HttpStatus.OK);
 	}

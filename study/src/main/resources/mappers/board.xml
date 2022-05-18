@@ -10,6 +10,7 @@
   			<id column="board_writer" property="board_writer"/>
   			<id column="board_username" property="board_username"/>
   			<id column="board_count" property="board_count"/>
+  			<id column="board_count_all" property="board_count_all"/>
   			<id column="create_date" property="create_date"/>
   			<id column="update_date" property="update_date"/>
   		</resultMap>
@@ -37,6 +38,7 @@
   				bm.board_writer,
   				um.username as board_username,
   				bm.board_count,
+  				(select count(*) from board_mst) as board_count_all,
   				bm.create_date,
   				bm.update_date
   			from
