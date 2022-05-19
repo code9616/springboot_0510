@@ -15,7 +15,6 @@
 
 .board-list{
 	display: flex;
-	flex-direction: colum;
 	justify-content: center;
 	align-items: center;
 	width: 100%

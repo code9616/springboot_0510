@@ -9,11 +9,23 @@
 	width: 1000px;
 }
 
+
 .board-list{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100%
+}
+
+.board-page-buttons{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 130px;
+}
+
+.pre-next-btn{
+	cursor: pointer;
 }
 
 .board-list-page{

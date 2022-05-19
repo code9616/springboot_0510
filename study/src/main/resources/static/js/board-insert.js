@@ -6,7 +6,7 @@ const textareaItem = document.querySelector('.textarea-item');
 Promise 비동기 처리 객체
 */
 
-function test(data){
+/*function test(data){
 	return new Promise((resolve, reject) => {
 		if(data > 100){
 			resolve(data);//=then
@@ -24,7 +24,7 @@ test(500) //호출시 리턴
 //임명함수 한번쓰고 말때
 submitBtn.onclick = () => {
 	submit();
-}
+}*/
 
 
 
@@ -74,7 +74,7 @@ function submit(){
 			throw new Error("정상적인 데이터를 응답받지 못했습니다.");
 		}
 	})
-	.then(data => {/*location.href = "/board/dtl/" + data.data;*/})
+	.then(data => {location.href = "/board-info/" + data.data;})
 	.catch(error => console.log(error));
 }
 

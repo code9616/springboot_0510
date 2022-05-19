@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.study.service.board.BoardService;
@@ -25,6 +26,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api")
 public class BoardController {
 	
 	private final BoardService boardService;
@@ -48,7 +50,7 @@ public class BoardController {
 	}
 	
 	@PutMapping("/board/{boardCode}")
-	public ResponseEntity<?> updateBoard(@PathVariable int boardCode, @Valid BoardUpdateReqDto boardUpdateReqDto, BindingResult bindingResult) throws Exception{
+	public ResponseEntity<?> updateBoard(@PathVariable int boardCode, @Valid @RequestBody BoardUpdateReqDto boardUpdateReqDto, BindingResult bindingResult) throws Exception{
 		int resultBoardCode = boardService.updateBoard(boardCode, boardUpdateReqDto);
 		return new ResponseEntity<>(new CMRespDto<Integer>(1, "게시글 수정 성공", resultBoardCode), HttpStatus.OK);
 	}

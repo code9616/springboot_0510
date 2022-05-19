@@ -47,6 +47,11 @@
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
+		<!-- spring-boot-starter-security -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 		<!-- slf4j-api -->
 		<dependency>
 		    <groupId>org.slf4j</groupId>
@@ -88,6 +93,7 @@
 		    <version>2.2.2</version>
 		</dependency>
 
+		
 		
 		
 

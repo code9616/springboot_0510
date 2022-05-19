@@ -89,7 +89,7 @@
   				board_title = #{board_title},
   				board_content = #{board_content}
   			where
-  				board_code = #{boardCode};
+  				board_code = #{board_code};
   		</update>
   		
   		<delete id="deleteBoard" parameterType="Integer">
