@@ -51,7 +51,7 @@ submitBtn.onclick = () => {
 }*/
 
 function submit(){
-	let url = "/board";
+	let url = "/api/board";
 	
 	let option = {
 		method: "POST",

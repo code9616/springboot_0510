@@ -72,7 +72,7 @@ function submit(){
 			throw new Error("정상적인 데이터를 응답받지 못했습니다.");
 		}
 	})
-	.then(data => {/*location.href = "/board/dtl/" + data.data;*/})
+	.then(data => {location.href = "/board-info/" + data.data;})
 	.catch(error => console.log(error));
 }
 

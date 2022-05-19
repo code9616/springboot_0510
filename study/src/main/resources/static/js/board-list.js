@@ -19,6 +19,7 @@ const boardListPage = document.querySelector('.board-list-page');
 	})
 	.then(result => {
 		getBoardList(result.data);
+		console.log(result.data);
 		createPageNumber(result.data[0].boardCountAll);
 		getBoardItems();
 	})

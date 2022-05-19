@@ -37,7 +37,7 @@ public class BoardController {
 		return new ResponseEntity<>(new CMRespDto<List<BoardRespDto>>(1, "게시글 목록 로드", boardRespDtos), HttpStatus.OK);
 	}
 	
-	@PostMapping("/board")
+	@PostMapping("/board")//Dto  @RequestBody로 가서 @RequestBody JSON으로 받음
 	public ResponseEntity<?> createBoard(@Valid @RequestBody BoardInsertReqDto boardInsertReqDto, BindingResult bindingResult) throws Exception{
 		int boardCode = boardService.createBoard(boardInsertReqDto);
 		return new ResponseEntity<>(new CMRespDto<Integer>(1, "게시글 작성 완료", boardCode), HttpStatus.OK);

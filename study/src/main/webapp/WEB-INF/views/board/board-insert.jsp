@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div id="container">
-		<div class = "board-list">
+		<div class="board-list">
 			<table class="board-list-table">
 				<tr>
 					<th>제목</th>
@@ -27,7 +27,9 @@
 			</table>
 			<button type="button" class="submit-btn">작성하기</button>
 		</div>
+		
 	</div>
+	
 	<script type="text/javascript" src="/js/board-insert.js"></script>
 </body>
 </html>
