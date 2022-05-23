@@ -16,8 +16,10 @@ public class User {
 	private String email;
 	private String name;
 	private String username;
+	private String oAuth2_username;
 	private String password;
 	private String roles; //ROLE_USER, ROLE_MANAGER, ROLE_ADMIN //ROLE: security
+	private String provider;
 	
 	public List<String> getRoleList(){
 		if(this.roles.length() > 0) {

@@ -2,16 +2,18 @@ package com.springboot.study.config.auth;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.springboot.study.domain.user.User;
 
 import lombok.Data;
 
 @Data
-public class PrincipalDetails implements UserDetails{
+public class PrincipalDetails implements UserDetails, OAuth2User{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -22,7 +24,10 @@ public class PrincipalDetails implements UserDetails{
 	}
 	
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
+	public Collection<? extends GrantedAuthority> getAuthorities() { //권한을 담고있는  Collection
+		Role role = new Role();
+		
+		user.getRoleList();
 		Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		
 		user.getRoleList().forEach(r -> { //람다List
@@ -69,6 +74,18 @@ public class PrincipalDetails implements UserDetails{
 	public boolean isEnabled() { //휴먼계정
 
 		return true;
+	}
+	
+	@Override
+	public Map<String, Object> getAttributes() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 
