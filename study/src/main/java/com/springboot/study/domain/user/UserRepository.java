@@ -7,4 +7,5 @@ public interface UserRepository {
 	public int insertUser(User user);
 	public User findUserByUsername(String username);
 	public User findOAuth2UserByOAuth2Username(String oAuth2Username);
+	
 }

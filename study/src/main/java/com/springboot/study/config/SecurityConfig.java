@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{ //모든 secru
 		http.authorizeRequests() //인증요청
 			.antMatchers("/api/board/**", "/", "/board/list") //요청이 들어오면 //URI 지정
 			.authenticated() //인증을 거쳐라
-			.antMatchers("/api/v1/user/**")
+			.antMatchers("/api/v1/user/**", "/user/account/**")
 			.access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
 			.antMatchers("/api/v1/manager/**")
 			.access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
@@ -51,6 +51,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{ //모든 secru
 			.oauth2Login()
 			.loginPage("/auth/signin")
 			.userInfoEndpoint()
+			/*
+			 * 1. 코드를 받는다(google, naver, kakao 등 로그인 요청을 했을 때 부여되는 코드번호)
+			 * 2. 에세스토큰을 발급받는다. (JWT)
+			 * 3. 스코프 정보에 접근할 수 있는 권한이 생긴다.
+			 * 4. 해당 정보를 시큐리티에서 활용하면 됨.
+			 */
 			.userService(principalOauth2UserService)
 			.and()
 			.defaultSuccessUrl("/");
