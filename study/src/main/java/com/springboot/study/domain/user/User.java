@@ -23,6 +23,8 @@ public class User {
 	private String roles; //ROLE_USER, ROLE_MANAGER, ROLE_ADMIN //ROLE: security
 	private String provider;
 	
+	private String profile_img_url;
+	
 	public List<String> getRoleList(){
 		if(this.roles.length() > 0) {
 			return Arrays.asList(this.roles.split(",")); //split은 배열로 리턴

@@ -47,6 +47,7 @@ getAuthenticationReq()
 			inputTexts[0].value = principal.username;
 			inputTexts[1].value = principal.email;
 			inputTexts[2].value = principal.name;
+			profileImgUrl.src = "/image/profile/" + principal.profile_img_url;
 		})
 		.catch(error => {
 			console.log(error);
