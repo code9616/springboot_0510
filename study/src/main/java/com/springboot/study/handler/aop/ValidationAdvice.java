@@ -33,7 +33,8 @@ public class ValidationAdvice {
 	
 	private final Logger LOGGER = LoggerFactory.getLogger(ValidationAdvice.class);
 	
-	@Around("execution(* com.springboot.study.web.controller.api.*Controller.*(..))") //pointcut //* 앞에 메소드가능(private, public)생략가능//..:하위폴더
+	//@Around("execution(* com.springboot.study.web.controller.api.*Controller.*(..))") //pointcut //* 앞에 메소드가능(private, public)생략가능//..:하위폴더
+	@Around("execution(* com.springboot.study.test.*Controllerpointcut.*(..))")
 	public Object apiAdvice(ProceedingJoinPoint proceedingJoinPoint)throws Throwable{
 		Object[] args = proceedingJoinPoint.getArgs();
 		for(Object arg : args) {

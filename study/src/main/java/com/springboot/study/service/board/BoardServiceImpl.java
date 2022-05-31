@@ -63,7 +63,7 @@ public class BoardServiceImpl implements BoardService{
 		int result = boardRepository.insertBoard(boardMst);
 		
 		if(result > 0) {
-			return boardMst.getBoard_code();
+			return boardMst.getBoard_code ();
 		}
 		return 0;
 	}

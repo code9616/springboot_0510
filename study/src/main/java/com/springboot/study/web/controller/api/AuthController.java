@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.springboot.study.annotation.Validation;
 import com.springboot.study.config.auth.PrincipalDetails;
 import com.springboot.study.domain.user.User;
 import com.springboot.study.domain.user.UserRepository;
@@ -49,6 +50,7 @@ public class AuthController {
 		return new ResponseEntity<>(new CMRespDto<User>(1, "회원가입완료", user), HttpStatus.OK);
 	}
 	
+	@Validation
 	@PostMapping("/auth/signup")
 	public ResponseEntity<?> signup(@Valid SignupReqDto signupReqDto, BindingResult bindingResult){//Valid-BindingResult(무조건 같이 붙여서 써줘야함)
 		//valid가 붙은 대상을 빈값체크를 하고나서 빈값이 있으면 bindingresult가 처리
